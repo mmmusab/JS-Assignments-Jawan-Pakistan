@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+var a = "global"; document.write(a + "<br>");
+
+function f(){ var b="function"; document.write(b + "<br>"); } f();
+
+if(true){ var c="block"; } document.write(c + "<br>");
+
+var d="first"; d="second"; document.write(d + "<br>");
+
+var e="one"; var e="two"; document.write(e + "<br>");
+
+document.write(hoist + "<br>"); var hoist="hoisted"; document.write(hoist + "<br>");
+</script>
+</body>
+</html>
