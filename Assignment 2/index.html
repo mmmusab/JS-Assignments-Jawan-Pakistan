@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marksheet</title>
+</head>
+<body>
+  <script>
+    var urdu = 80;
+    var eng = 66;
+    var math = 47;
+    var computer = 53;
+    var isl = 79;
+
+    var totalMarks = 500;
+    var obtainedMarks = isl + urdu + eng + math + computer;
+    var percentage = (obtainedMarks / totalMarks) * 100;
+    var grade;
+
+    if (percentage >= 80) {
+      grade = "A+";
+    } else if (percentage >= 70) {
+      grade = "A";
+    } else if (percentage >= 60) {
+      grade = "B";
+    } else if (percentage >= 50) {
+      grade = "C";
+    } else {
+      grade = "Fail";
+    }
+
+    document.write("Islamiat: " + isl + "<br>");
+    document.write("Urdu: " + urdu + "<br>");
+    document.write("English: " + eng + "<br>");
+    document.write("Math: " + math + "<br>");
+    document.write("Computer: " + computer + "<br><hr>");
+
+    document.write("<b>Total Marks: </b>" + totalMarks + "<br><br>");
+    document.write("<b>Obtained Marks: </b>" + obtainedMarks + "<br><br>");
+    document.write("<b>Percentage: </b>" + percentage.toFixed(1) + "%<br><br>");
+    document.write("<b>Grade: </b>" + grade + "<br>");
+  </script>
+</body>
+</html>
