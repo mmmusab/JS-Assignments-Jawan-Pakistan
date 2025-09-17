@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub User Finder</title>
+</head>
+<body>
+  <h1>GitHub User Finder</h1>
+  <input type="text" id="username" placeholder="Enter GitHub username">
+  <button onclick="findUser()">Search</button>
+
+  <div id="result"></div>
+
+  <script>
+    async function findUser() {
+      const username = document.getElementById("username").value;
+      const resultDiv = document.getElementById("result");
+
+      if (!username) {
+        resultDiv.innerHTML = "Please enter a username.";
+        return;
+      }
+
+      resultDiv.innerHTML = "Loading...";
+
+      try {
+        const res = await fetch(`https://api.github.com/users/${username}`);
+        if (!res.ok) {
+          resultDiv.innerHTML = "User not found.";
+          return;
+        }
+
+        const data = await res.json();
+        resultDiv.innerHTML = `
+          <h2>${data.login}</h2>
+          <img src="${data.avatar_url}" width="100" height="100"><br>
+          <p>Name: ${data.name || "Not available"}</p>
+          <p>Public Repos: ${data.public_repos}</p>
+          <p>Followers: ${data.followers}</p>
+          <p>Following: ${data.following}</p>
+          <a href="${data.html_url}" target="_blank">View Profile</a>
+        `;
+      } catch (error) {
+        resultDiv.innerHTML = "Error fetching data.";
+      }
+    }
+  </script>
+</body>
+</html>
